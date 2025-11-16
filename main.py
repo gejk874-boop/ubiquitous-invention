@@ -60,7 +60,6 @@ user_keyboard = ReplyKeyboardMarkup(
         [KeyboardButton("ℹ️ Помощь")]
     ],
     resize_keyboard=True,
-    persistent=True
 )
 
 # ===== АНТИСПАМ =====
