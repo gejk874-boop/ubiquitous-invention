@@ -111,7 +111,7 @@ def add_bot_user(user_id, username, first_name, last_name):
 
 def get_user_id_by_username(username):
     """Получить ID пользователя по username"""
-    try:
+    
         conn = sqlite3.connect('reports.db', check_same_thread=False)
         cursor = conn.cursor()
         cursor.execute('SELECT user_id FROM bot_users WHERE username = ?', (username.lower(),))
