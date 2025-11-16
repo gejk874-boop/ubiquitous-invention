@@ -107,26 +107,7 @@ def add_bot_user(user_id, username, first_name, last_name):
     try:
         conn = sqlite3.connect('reports.db', check_same_thread=False)
         cursor = conn.cursor()
-        cursor.execute('''
-            INSERT OR REPLACE INTO bot_users (user_id, username, first_name, last_name)
-            VALUES (?, ?, ?, ?)
-        ''', (user_id, username, first_name, last_name))
-        conn.commit()
-        conn.close()
-    except Exception as e:
-        logger.error(f"❌ Ошибка добавления пользователя: {e}")
-
-def get_all_bot_users():
-    try:
-        conn = sqlite3.connect('reports.db', check_same_thread=False)
-        cursor = conn.cursor()
-        cursor.execute('SELECT user_id, username FROM bot_users')
-        users = cursor.fetchall()
-        conn.close()
-        return users
-    except Exception as e:
-        logger.error(f"❌ Ошибка получения пользователей: {e}")
-        return []
+        
 
 def get_user_id_by_username(username):
     """Получить ID пользователя по username"""
@@ -366,28 +347,7 @@ def get_user_keyboard(user_id):
         keyboard.append([KeyboardButton(text="🛠 Админ")])
     return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
-status_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="обманщик"), KeyboardButton(text="ненадёжный")],
-        [KeyboardButton(text="мошенник"), KeyboardButton(text="другое")],
-        [KeyboardButton(text="🔙 Назад")]
-    ],
-    resize_keyboard=True
-)
 
-back_keyboard = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="🔙 Назад")]],
-    resize_keyboard=True
-)
-
-# ===== ВАЛИДАЦИЯ =====
-def validate_username(username):
-    if not username or len(username) < 3:
-        return False, "❌ Юзернейм слишком короткий (минимум 3 символа)"
-    
-    if len(username) > 32:
-        return False, "❌ Юзернейм слишком длинный (максимум 32 символа)"
-    
     if not re.match(r'^[a-zA-Z0-9_]+$', username):
         return False, "❌ Юзернейм может содержать только буквы, цифры и подчеркивания"
     
