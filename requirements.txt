@@ -1,3 +1,1 @@
-hydrogram
-tgcrypto
-flask
+aiogram==3.2.0
