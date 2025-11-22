@@ -362,7 +362,7 @@ async def cmd_start(message: types.Message):
     
     # Отправляем фото с приветственным сообщением
     try:
-        with open('1000028240.jpg', 'rb') as photo:
+        with open('LumiL20251122_105626106.jpg', 'rb') as photo:
             await message.answer_photo(
                 photo=photo,
                 caption=welcome_text,
