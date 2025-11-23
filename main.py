@@ -16,7 +16,7 @@ from aiogram.types import (
 )
 
 # === КОНФИГУРАЦИЯ ===
-BOT_TOKEN = "8243992851:AAGoLj2MowK2_ft_dKfnIo1TjfK6tArfMsQ"
+BOT_TOKEN = "8368551303:AAFWZi4TZJhfEqYEOLyQOutGW0HxOyhg99M"
 ADMIN_IDS = [6986121067]
 
 bot = Bot(token=BOT_TOKEN)
