@@ -320,8 +320,8 @@ proof_keyboard = ReplyKeyboardMarkup(
 
 status_keyboard = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="обманщик"), KeyboardButton(text="ненадёжный")],
-        [KeyboardButton(text="мошенник"), KeyboardButton(text="другое")],
+        [KeyboardButton(text="тролль"), KeyboardButton(text="доксинг")],
+        [KeyboardButton(text="скам"), KeyboardButton(text="другое")],
         [KeyboardButton(text="🔙 Назад")]
     ],
     resize_keyboard=True
