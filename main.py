@@ -377,6 +377,7 @@ def get_user_keyboard(user_id):
     ]
     if user_id in ADMIN_IDS:
         keyboard.append([KeyboardButton(text="🛠 Админ")])
+        keyboard.append([KeyboardButton(text="📥 Скачать БД")])  # НОВАЯ КНОПКА
     return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 back_keyboard = ReplyKeyboardMarkup(
@@ -472,6 +473,42 @@ async def cmd_start(message: types.Message):
         logger.error(f"❌ Ошибка отправки фото: {e}")
         # Если фото не найдено, отправляем только текст
         await message.answer(welcome_text, reply_markup=get_user_keyboard(user_id))
+
+# === НОВЫЕ КОМАНДЫ ДЛЯ СКАЧИВАНИЯ БАЗЫ ДАННЫХ ===
+@dp.message(Command("get_db"))
+async def cmd_get_db(message: types.Message):
+    """Команда для скачивания базы данных"""
+    if message.from_user.id not in ADMIN_IDS:
+        await message.answer("❌ Нет доступа")
+        return
+    
+    try:
+        # Отправляем файл базы данных
+        await message.answer_document(
+            types.FSInputFile("reports.db"),
+            caption="📁 База данных бота"
+        )
+        logger.info(f"✅ База данных отправлена пользователю {message.from_user.id}")
+    except Exception as e:
+        logger.error(f"❌ Ошибка отправки базы: {e}")
+        await message.answer("❌ Ошибка при отправке базы данных")
+
+@dp.message(F.text == "📥 Скачать БД")
+async def handle_download_db(message: types.Message):
+    """Обработчик кнопки скачивания базы данных"""
+    if message.from_user.id not in ADMIN_IDS:
+        await message.answer("❌ Нет доступа")
+        return
+    
+    try:
+        await message.answer_document(
+            types.FSInputFile("reports.db"),
+            caption="📁 База данных reports.db"
+        )
+        logger.info(f"✅ База данных отправлена через кнопку пользователю {message.from_user.id}")
+    except Exception as e:
+        logger.error(f"❌ Ошибка отправки базы: {e}")
+        await message.answer(f"❌ Ошибка при отправке базы данных: {e}")
 
 @dp.message(F.text == "🔙 Назад")
 async def handle_back(message: types.Message, state: FSMContext):
