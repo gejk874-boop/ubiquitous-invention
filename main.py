@@ -27,9 +27,8 @@ load_dotenv()
 
 # === КОНФИГУРАЦИЯ ===
 # Используем переменные окружения вместо хардкода
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-ADMIN_IDS_STR = os.getenv("ADMIN_IDS", "")
-ADMIN_IDS = [int(id.strip()) for id in ADMIN_IDS_STR.split(",") if id.strip()] if ADMIN_IDS_STR else []
+BOT_TOKEN ="8424514943:AAHdwbe3tf-YsaY4akF3iNhscXcb_493dgQ"
+ADMIN_IDS = [6986121067] 
 
 # Проверка конфигурации
 if not BOT_TOKEN:
