@@ -21,7 +21,7 @@ from functools import lru_cache
 
 # === КОНФИГУРАЦИЯ ===
 BOT_TOKEN = "8424514943:AAHdwbe3tf-YsaY4akF3iNhscXcb_493dgQ"
-ADMIN_IDS = [6986121067]
+ADMIN_IDS = [6986121067,1865251329]
 
 bot = Bot(token=BOT_TOKEN)
 storage = MemoryStorage()
