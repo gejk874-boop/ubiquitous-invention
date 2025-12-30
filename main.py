@@ -599,15 +599,12 @@ async def cmd_check(message: types.Message, command: CommandObject):
         if chat_type in ["group", "supergroup"]:
             await message.answer(
                 " 📋 Использование команды в группе: 
-                "/check @username"
-
-        
+                "/check username
             )
         else:
             await message.answer(
-                "🔍 Проверить пользователя
-              
-                "/check @username"
+                "🔍 Проверить пользователя"
+                "check username"
             )
         return
     
