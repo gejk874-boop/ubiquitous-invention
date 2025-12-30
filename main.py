@@ -1414,4 +1414,3 @@ if __name__ == "__main__":
         logger.info("⏹️ Бот остановлен")
     except Exception as e:
         logger.error(f"❌ Фатальная ошибка: {e}")
-[file content end]
