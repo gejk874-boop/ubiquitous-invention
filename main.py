@@ -25,7 +25,7 @@ from functools import lru_cache
 
 # === КОНФИГУРАЦИЯ ===
 BOT_TOKEN = "8424514943:AAHdwbe3tf-YsaY4akF3iNhscXcb_493dgQ"
-ADMIN_IDS = [6986121067, 5578255123]
+ADMIN_IDS = [6986121067]
 
 # Настройка логирования ДО создания бота
 logging.basicConfig(
